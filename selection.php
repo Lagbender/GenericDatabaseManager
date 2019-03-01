@@ -15,8 +15,8 @@
 						$content = "";
 						foreach ($rows as $field) {
 							foreach ($field as $tmp) {
-								$content .= "\"<label> " . $tmp . " </label>\"";
-								$content .= "\"<br />\"";
+								$content .= "<label> " . $tmp . " </label>";
+								$content .= "<br />";
 							}
 							echo "document.getElementById(\"fields\").innerHTML = " . $content;
 						}
