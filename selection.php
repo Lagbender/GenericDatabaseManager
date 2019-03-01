@@ -7,29 +7,31 @@
 		<script type="text/javascript">
 			function select_table() {
 				table_index = document.getElementById("tables").selectedIndex;
+				console.log(table_index);
 				switch(table_index) {
 					<?php
 					$index = 0;
 					foreach ($fields as $rows) {
 						echo "case " . ($index++) . ":";
-						$content = "";
+						$content = "\"";
 						foreach ($rows as $field) {
 							foreach ($field as $tmp) {
-								$content .= "<label> " . $tmp . " </label>";
-								$content .= "<br />";
+								$content .= "<label> " . $tmp . " </label>    ";
 							}
-							echo "document.getElementById(\"fields\").innerHTML = " . $content;
+							$content .= "<br />";
 						}
+						$content .= "\"";
+						echo "document.getElementById(\"fields\").innerHTML = " . $content . "; break;";
 					}
 					?>
 				}
 			}
 		</script>
     </head>
-    <body>
+    <body onload="select_table();">
 		<fieldset>
 			<legend>
-				<select id="tables" form="insert" onchange="select_table();">
+				<select id="tables" form="insert" onchange="select_table();" autofocus>
 					<?php
 					foreach ($tables as $rows) {
 						foreach ($rows as $table_name) {
@@ -41,20 +43,7 @@
 					?>
 				</select>
 			</legend>
-			<label id="fields">
-				<?php
-				foreach ($fields as $rows) {
-					foreach ($rows as $field) {
-						foreach ($field as $tmp) {
-						?>
-							<label> <?php echo $tmp; ?> </label>
-							<br />
-						<?php
-						}
-					}
-				}
-				?>
-			</label>
+			<label id="fields"></label>
 		</fieldset>
     </body>
 </html>

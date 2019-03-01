@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')  {
 			
 		}*/
 	} else {
-		$errno = "404";
+		$errorNo = "404";
 		$error = "Database not found";
 		require "error.php";
 	}
