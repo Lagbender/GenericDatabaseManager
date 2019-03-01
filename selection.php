@@ -15,10 +15,10 @@
 						echo "case " . ($index++) . ":";
 						$content = "\"";
 						foreach ($rows as $field) {
-							foreach ($field as $tmp) {
-								$content .= "<label> " . $tmp . " </label>    ";
-							}
-							$content .= "<br />";
+							//foreach ($field as $value) {
+							//	$content .= "<label> " . $value . " </label>";
+							//}
+							$content .= set_right_input_type($field) . "<br />";
 						}
 						$content .= "\"";
 						echo "document.getElementById(\"fields\").innerHTML = " . $content . "; break;";
@@ -26,6 +26,26 @@
 					?>
 				}
 			}
+			
+			<?php
+			function set_right_input_type($field) {
+				$name = $field[0];
+				$type = substr($field[1], 0, strpos($field[1], "("));
+				$max = substr($field[1], strpos($field[1], "("));
+				$ret = "<label>" . $name . "</label>";
+				if (strpos($field[1], "date") !== false) {
+					$ret .= "<input type='date' name='" . $name . "' />";
+				} elseif (strpos($field[1], "varchar") !== false) {
+						$ret .= "<textarea rows='1' name='" . $name . "'></textarea>";
+				} elseif (strpos($field[1], "char") !== false) {
+						$ret .= "<input type='text' name='" . $name . "' />";
+				} elseif (strpos($field[1], "int") !== false || strpos($field[1], "float") !== false || strpos($field[1], "double") !== false || strpos($field[1], "real") !== false) {
+					$ret .= "<input type='number' name='" . $name . "' />";
+				}
+				
+				return $ret;
+			}
+			?>
 		</script>
     </head>
     <body onload="select_table();">
