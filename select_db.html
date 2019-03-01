@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Select database</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="../style.css" type="text/css" />
+    </head>
+    <body>
+        <h1>Select database</h1>
+        <form method="post" action="form.php">
+            <fieldset>
+                <legend>Name</legend>
+                <p>
+                    <label>Name</label><input type="text" name="db_name" required="required" />
+					<hidden name="action" value="selection" />
+                </p>
+            </fieldset>
+            <p>
+                <input type="submit" value="Invio" />
+                <input type="reset" value="Reset" />
+            </p>
+        </form>
+    </body>
+</html>
