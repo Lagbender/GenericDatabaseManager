@@ -30,17 +30,17 @@
 			<?php
 			function set_right_input_type($field) {
 				$name = $field[0];
-				$type = substr($field[1], 0, strpos($field[1], "("));
-				$max = substr($field[1], strpos($field[1], "("));
+				$type = $field[1];
+				$required = $field[2] == "NO" ? true : false;
 				$ret = "<label>" . $name . "</label>";
-				if (strpos($field[1], "date") !== false) {
-					$ret .= "<input type='date' name='" . $name . "' />";
-				} elseif (strpos($field[1], "varchar") !== false) {
-						$ret .= "<textarea rows='1' name='" . $name . "'></textarea>";
-				} elseif (strpos($field[1], "char") !== false) {
-						$ret .= "<input type='text' name='" . $name . "' />";
-				} elseif (strpos($field[1], "int") !== false || strpos($field[1], "float") !== false || strpos($field[1], "double") !== false || strpos($field[1], "real") !== false) {
-					$ret .= "<input type='number' name='" . $name . "' />";
+				if (strpos($type, "date") !== false) {
+					$ret .= "<input type='date' name='" . $name . "' " . ($required ? "required='required'" : "") . "/>" . ($required ? "*" : "");
+				} elseif (strpos($type, "varchar") !== false) {
+						$ret .= "<textarea rows='1' name='" . $name . "'" . ($required ? "required='required'" : "") . "></textarea>" . ($required ? "*" : "");
+				} elseif (strpos($type, "char") !== false) {
+						$ret .= "<input type='text' name='" . $name . "' " . ($required ? "required='required'" : "") . "/>" . ($required ? "*" : "");
+				} elseif (strpos($type, "int") !== false || strpos($type, "float") !== false || strpos($type, "double") !== false || strpos($type, "real") !== false) {
+					$ret .= "<input type='number' name='" . $name . "' " . ($required ? "required='required'" : "") . "/>" . ($required ? "*" : "");
 				}
 				
 				return $ret;
