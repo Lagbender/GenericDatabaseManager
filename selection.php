@@ -49,21 +49,27 @@
 		</script>
     </head>
     <body onload="select_table();">
-		<fieldset>
-			<legend>
-				<select id="tables" form="insert" onchange="select_table();" autofocus>
-					<?php
-					foreach ($tables as $rows) {
-						foreach ($rows as $table_name) {
-						?>
-					        <option name="<?php echo $table_name; ?>"> <?php echo $table_name; ?> </option>
+		<form name="selection" action="controller.php" method="post">
+			<fieldset>
+				<legend>
+					<select id="tables" onchange="select_table();" autofocus>
 						<?php
+						foreach ($tables as $rows) {
+							foreach ($rows as $table_name) {
+							?>
+								<option name="<?php echo $table_name; ?>"> <?php echo $table_name; ?> </option>
+							<?php
+							}
 						}
-					}
-					?>
-				</select>
-			</legend>
-			<label id="fields"></label>
-		</fieldset>
+						?>
+					</select>
+				</legend>
+				<label id="fields"></label>
+				<input type="hidden" name="to_do" value="insert" />
+				<input type="hidden" name="db_name" value="<?php echo DB; ?>" />
+				<input type="submit" value="Send" />
+				<input type="reset" value="reset" />
+			</fieldset>
+		</form>
     </body>
 </html>

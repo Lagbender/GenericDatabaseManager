@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')  {
 	if (!$mysqli->connect_errno) {
 		require "query.php";
 		
-		/*if ($_POST["action"] == "selection") {*/
+		if ($_POST["to_do"] == "select") {
 			$tables = tables($mysqli);
 			if ($mysqli->errno) {
 				$error = $mysqli->error;
@@ -25,9 +25,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')  {
 			}
 			
 			$mysqli->close();
-		/*} elseif ($_POST["action"] == "insertion") {
-			
-		}*/
+		} elseif ($_POST["to_do"] == "insert") {
+		}
 	} else {
 		$errorNo = "404";
 		$error = "Database not found";
