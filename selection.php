@@ -14,11 +14,12 @@
 					foreach ($fields as $rows) {
 						echo "case " . ($index++) . ":";
 						$content = "\"";
+						$i = 0;
 						foreach ($rows as $field) {
 							//foreach ($field as $value) {
 							//	$content .= "<label> " . $value . " </label>";
 							//}
-							$content .= set_right_input_type($field) . "<br />";
+							$content .= set_right_input_type($field, $i++) . "<br />";
 						}
 						$content .= "\"";
 						echo "document.getElementById(\"fields\").innerHTML = " . $content . "; break;";
@@ -28,11 +29,11 @@
 			}
 			
 			<?php
-			function set_right_input_type($field) {
+			function set_right_input_type($field, $index) {
 				$name = $field[0];
 				$type = $field[1];
 				$required = $field[2] == "NO" ? true : false;
-				$ret = "<label>" . $name . "</label>";
+				$ret = "<label name='field_name_" . ($index) . "'>" . $name . "</label>";
 				if (strpos($type, "date") !== false) {
 					$ret .= "<input type='date' name='" . $name . "' " . ($required ? "required='required'" : "") . "/>" . ($required ? "*" : "");
 				} elseif (strpos($type, "varchar") !== false) {

@@ -26,6 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')  {
 			
 			$mysqli->close();
 		} elseif ($_POST["to_do"] == "insert") {
+			
 		}
 	} else {
 		$errorNo = "404";
