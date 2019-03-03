@@ -2,7 +2,16 @@
 <html>
     <head>
         <title>Popolamento database</title>
-        <meta charset="UTF-8" />
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Required meta tags -->
+
+        <!-- CSS e link vari -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <!-- CSS e link vari -->
 		
 		<script type="text/javascript">
 			function select_table() {
@@ -49,28 +58,38 @@
 			?>
 		</script>
     </head>
-    <body onload="select_table();">
-		<form name="selection" action="controller.php" method="post">
-			<fieldset>
-				<legend>
-					<select id="tables" onchange="select_table();" autofocus>
-						<?php
-						foreach ($tables as $rows) {
-							foreach ($rows as $table_name) {
-							?>
-								<option name="<?php echo $table_name; ?>"> <?php echo $table_name; ?> </option>
-							<?php
-							}
-						}
-						?>
-					</select>
-				</legend>
-				<label id="fields"></label>
-				<input type="hidden" name="to_do" value="insert" />
-				<input type="hidden" name="db_name" value="<?php echo DB; ?>" />
-				<input type="submit" value="Send" />
-				<input type="reset" value="reset" />
-			</fieldset>
-		</form>
+		<body onload="select_table();">
+			<div id="override">
+				<form name="selection" action="controller.php" method="post">
+					<div class="text">
+						<fieldset class = "form-group">
+							<legend>
+								<select class="select" id="tables" onchange="select_table();" autofocus>
+									<?php
+									foreach ($tables as $rows) {
+										foreach ($rows as $table_name) {
+										?>
+											<option name="<?php echo $table_name; ?>"> <?php echo $table_name; ?> </option>
+										<?php
+										}
+									}
+									?>
+								</select>
+							</legend>
+							<label id="fields"></label>
+							<input type="hidden" name="to_do" value="insert" />
+							<input type="hidden" name="db_name" value="<?php echo DB; ?>" />
+							<div><input type="submit" class="btn" value="Send" />
+							<input type="reset" class="btn" value="reset" /></div>
+							
+						</fieldset>
+					</div>
+				</form>
+			</div>
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+			<script>
+				$(".select").css({"font-size": "18px"});
+			</script>
     </body>
 </html>

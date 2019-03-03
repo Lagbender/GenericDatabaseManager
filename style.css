@@ -1,0 +1,53 @@
+/*-------------------------- General -----------------------*/
+
+body{
+    background: #eeeeee;
+}
+
+#override{
+    padding-top: 3%;
+    display: block;
+    margin: 3% 20% !important;
+    border-left: 4px solid #d50000;
+    background: white;
+}
+
+#override .text{
+    padding-bottom: 3%;
+    width: 70%;
+    margin-top: 2%;
+    margin-left: 15%;
+}
+
+/*-------------------------- General -----------------------*/
+
+/*-------------------------- Form -----------------------*/
+
+#override .form-group label{
+    font-size: 18px;
+}
+
+#override .btn{
+    float: right;
+    margin-left: 1%;
+    background: #d50000;
+    color: white;
+    box-shadow: none;
+}
+
+#override .btn:hover{
+    float: right;
+    margin-left: 1%;
+    background: none;
+    color: #d50000;
+    border-bottom: 3px solid #ffd149;
+}
+
+#override input[type = "text"]:hover, input[type = "text"]:focus{
+    border: none;
+    border-bottom: 3px solid #ffd149;
+    box-shadow: none;
+}
+
+
+/*-------------------------- Form -----------------------*/
